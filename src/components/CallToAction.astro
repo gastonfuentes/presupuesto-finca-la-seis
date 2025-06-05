@@ -1,0 +1,107 @@
+---
+// Infographic points data
+const infographicPoints = [
+  {
+    title: "Paso Clave al Mundo Digital",
+    text: "En FINCA LA SEIS ya hacen un trabajo excelente. Nuestra propuesta los acompaña a dar ese paso clave al mundo digital, de forma profesional, automatizada y sin complicaciones.",
+    icon: `
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-purple-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    `,
+    aos: "fade-right"
+  },
+  {
+    title: "Nos Encargamos de la Complejidad",
+    text: "Gestionar un ecommerce puede ser complejo. Con nuestro sistema, todo queda en manos de expertos. Ustedes solo se enfocan en producir calidad.",
+    icon: `
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-pink-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    `,
+    aos: "fade-left"
+  },
+  {
+    title: "Potencia de la IA a su Servicio",
+    text: "Con el asistente virtual, su tienda responde sola, de forma inteligente, resolviendo dudas y generando reportes útiles para tomar mejores decisiones. Un empleado digital incansable.",
+    icon: `
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-teal-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+      </svg>
+    `,
+    aos: "fade-right"
+  },
+  {
+    title: "Oportunidad de Crecimiento",
+    text: "Profesionalice ventas, mejore atención al cliente y posicione a FINCA LA SEIS como marca moderna, ágil y lista para escalar.",
+    icon: `
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-orange-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11.03 12.043l.076.039.029-.013a2.039 2.039 0 012.72-.328l.09.06.042-.02a1.022 1.022 0 011.372-.168l.046.029.018-.009.007-.003a.512.512 0 01.686-.084l.023.015-.009-.005a10.052 10.052 0 001.968-.293l.034-.01" />
+      </svg>
+    `,
+    aos: "fade-left"
+  }
+];
+
+const finalInvitation = "Estamos convencidos de que este es el momento. Y queremos hacerlo con ustedes.";
+const commitment = "Nuestro compromiso es acompañarlos en ese proceso, con una relación a largo plazo que les dé resultados concretos desde el primer mes."
+
+const whatsappLink = "https://wa.me/5493804526196?text=Hola%2C%20estoy%20interesado%20en%20la%20propuesta%20de%20Tienda%20Inteligente%20para%20FINCA%20LA%20SEIS.";
+
+const whatsappIcon = `
+<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+</svg>
+`;
+---
+
+<section id="cta" class="py-16 md:py-24 bg-gradient-to-br from-gray-900 via-purple-900/40 to-gray-900 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-5">
+     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="largeGrid" width="80" height="80" patternUnits="userSpaceOnUse"><rect width="80" height="80" fill="none"/><path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(128, 90, 213, 0.2)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#largeGrid)" /></svg>
+  </div>
+  <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
+    <div data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-16 leading-tight">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 block">El Futuro de FINCA LA SEIS</span>
+        <span class="text-gray-100 block mt-2">es Digital e Inteligente</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-10 mb-16">
+      {infographicPoints.map((point, index) => (
+        <div
+          class="bg-gray-800/70 backdrop-blur-md p-6 rounded-xl shadow-xl border border-gray-700/50 text-left flex flex-col items-center md:items-start"
+          data-aos={point.aos}
+          data-aos-delay={index * 100}
+        >
+          <div class="shrink-0" set:html={point.icon}></div>
+          <h3 class="text-xl lg:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-400 mb-3 text-center md:text-left">{point.title}</h3>
+          <p class="text-gray-300 text-sm lg:text-base text-center md:text-left">{point.text}</p>
+        </div>
+      ))}
+    </div>
+    
+    <div data-aos="fade-up" data-aos-delay="400">
+        <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-8 bg-gray-800/60 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-gray-700/30">
+            {commitment}
+        </p>
+      <p class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-orange-400 mb-10">
+        {finalInvitation}
+      </p>
+      <div data-aos="zoom-in" data-aos-delay="600">
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-xl transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-green-300/50"
+        >
+          <Fragment set:html={whatsappIcon} />
+          ¡Hablemos por WhatsApp!
+        </a>
+        <p class="text-sm text-gray-400 mt-4">Haz clic para iniciar una conversación o resolver tus dudas.</p>
+      </div>
+    </div>
+  </div>
+</section> 

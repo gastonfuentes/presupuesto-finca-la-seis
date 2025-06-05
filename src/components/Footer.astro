@@ -1,0 +1,17 @@
+---
+const currentYear = new Date().getFullYear();
+const agencyName = "Gannet labs"; // Placeholder, use your agency's name
+const agencyUrl = "#"; // Placeholder, use your agency's URL
+---
+
+<footer class="py-8 bg-gray-900 border-t border-gray-700/50">
+  <div class="container mx-auto px-6 text-center text-gray-500">
+    <p class="mb-2">
+      Propuesta preparada con ❤️ para FINCA LA SEIS por <a href={agencyUrl} target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 transition-colors duration-300">{agencyName}</a>.
+    </p>
+    <p class="text-sm">
+      &copy; {currentYear} {agencyName}. Todos los derechos reservados.
+    </p>
+     
+  </div>
+</footer> 

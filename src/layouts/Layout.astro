@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+import 'aos/dist/aos.css'; // Import AOS styles
+
+export interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Presupuesto Tienda Inteligente para FINCA LA SEIS" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<slot />
+		<script>
+      import AOS from 'aos';
+			AOS.init({
+				duration: 800, // values from 0 to 3000, with step 50ms
+				once: true, // whether animation should happen only once - while scrolling down
+			});
+		</script>
+	</body>
+</html>
+
+<script>
+  // This script ensures AOS is available globally if needed, but primary initialization is above.
+  // If not using a CDN, AOS needs to be imported or included in your build process.
+  // For this setup, we will create a small local aos.js that exports the AOS object.
+</script> 

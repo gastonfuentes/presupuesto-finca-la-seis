@@ -1,0 +1,70 @@
+---
+const features = [
+  { name: "Diseño personalizado y configuración completa", option1: true, option2: true },
+  { name: "Carga inicial de productos", option1: true, option2: true },
+  { name: "Capacitación para gestionar productos y stock", option1: true, option2: true },
+  { name: "Integración con redes sociales y WhatsApp", option1: true, option2: true },
+  { name: "Configuración de medios de pago y envío", option1: true, option2: true },
+  { name: "Automatizaciones básicas", option1: true, option2: true },
+  { name: "Soporte técnico continuo", option1: true, option2: true },
+  { name: "Plan Esencial de Tiendanube (valor oficial AR$ 6.999/mes)", option1: true, option2: true },
+  { name: "Dominio personalizado (ya gestionado por el cliente)", option1: true, option2: true },
+  { name: "Asistente virtual de IA 24/7", option1: false, option2: true },
+  { name: "- Consulta sobre stock, precios, envíos, etc.", option1: false, option2: true, isSubFeature: true },
+  { name: "- Reportes semanales y mensuales automáticos (ventas, consultas, etc.)", option1: false, option2: true, isSubFeature: true },
+  { name: "- Capacidad de escalar y ajustarse según el negocio", option1: false, option2: true, isSubFeature: true },
+  { name: "- Sin límite de consultas", option1: false, option2: true, isSubFeature: true },
+  { name: "- Mantenimiento del servidor VPS incluido (sin costos extra para el cliente)", option1: false, option2: true, isSubFeature: true },
+];
+
+const pricing = [
+  { name: "Precio mensual (todo incluido)", option1Price: "USD 179", option2Price: "USD 229" },
+  { name: "Mínimo de permanencia", option1Price: "6 meses", option2Price: "6 meses" },
+];
+
+const checkMark = "<span class='text-green-400 text-2xl'>✅</span>";
+const crossMark = "<span class='text-red-400 text-2xl'>❌</span>";
+const moneyBag = "<span class='text-yellow-400 text-xl mr-1'>💰</span>"; // Money bag icon for price
+---
+
+<section id="tabla" class="py-16 md:py-24 bg-gray-900">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 mb-16" data-aos="fade-up">
+      Comparativa Detallada de Planes
+    </h2>
+    <div class="overflow-x-auto shadow-2xl rounded-xl border border-gray-700/50" data-aos="zoom-in">
+      <table class="min-w-full divide-y divide-gray-700">
+        <thead class="bg-gray-700/60">
+          <tr>
+            <th scope="col" class="py-5 px-6 text-left text-sm font-semibold text-purple-200 uppercase tracking-wider w-2/5">Característica</th>
+            <th scope="col" class="py-5 px-6 text-center text-sm font-semibold text-green-300 uppercase tracking-wider">🟩 Opción 1</th>
+            <th scope="col" class="py-5 px-6 text-center text-sm font-semibold text-pink-300 uppercase tracking-wider">🤖 Opción 2</th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-800 divide-y divide-gray-700/70">
+          {features.map(feature => (
+            <tr class={`hover:bg-gray-700/40 transition-colors duration-150 ${feature.isSubFeature ? 'bg-gray-800/50' : ''}`}>
+              <td class={`py-4 px-6 text-sm font-medium ${feature.isSubFeature ? 'pl-10 text-gray-300' : 'text-gray-100'}`}>{feature.name}</td>
+              <td class="py-4 px-6 text-center text-gray-300"><Fragment set:html={feature.option1 ? checkMark : crossMark} /></td>
+              <td class="py-4 px-6 text-center text-gray-300"><Fragment set:html={feature.option2 ? checkMark : crossMark} /></td>
+            </tr>
+          ))}
+          {/* Pricing Rows - Highlighted */}
+          {pricing.map(priceItem => (
+            <tr class="bg-gray-700/30 hover:bg-gray-700/50 transition-colors duration-150">
+              <td class="py-5 px-6 text-sm font-semibold text-purple-200">{priceItem.name}</td>
+              <td class="py-5 px-6 text-center text-xl font-bold text-green-300">
+                {priceItem.name.toLowerCase().includes('precio') && <Fragment set:html={moneyBag} />}
+                {priceItem.option1Price}
+              </td>
+              <td class="py-5 px-6 text-center text-xl font-bold text-pink-300">
+                {priceItem.name.toLowerCase().includes('precio') && <Fragment set:html={moneyBag} />}
+                {priceItem.option2Price}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section> 

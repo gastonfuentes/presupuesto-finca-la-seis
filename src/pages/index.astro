@@ -1,0 +1,24 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Hero from '@components/Hero.astro';
+import PricingSection from '@components/PricingSection.astro';
+import ComparisonTable from '@components/ComparisonTable.astro';
+import TermsAndConditions from '@components/TermsAndConditions.astro';
+import CallToAction from '@components/CallToAction.astro';
+import Footer from '@components/Footer.astro';
+
+const pageTitle = "Propuesta Tienda Inteligente – FINCA LA SEIS";
+---
+
+<Layout title={pageTitle}>
+	<Header />
+	<main>
+		<Hero />
+		<PricingSection />
+		<ComparisonTable />
+		<TermsAndConditions />
+		<CallToAction />
+	</main>
+	<Footer />
+</Layout> 

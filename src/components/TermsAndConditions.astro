@@ -1,0 +1,136 @@
+---
+const terms = [
+  {
+    id: "tiendanube",
+    title: "Sobre Tiendanube",
+    points: [
+      "El costo del Plan Esencial de Tiendanube ya está incluido en nuestra suscripción mensual. Es decir, el cliente no tiene que pagar nada adicional a Tiendanube para mantener activa la tienda.",
+      "Tiendanube cobra además una comisión por cada venta realizada a través de la tienda online. Esta comisión varía según el medio de pago utilizado:",
+      "💳 Pagos con tarjeta o Mercado Pago: Tiendanube cobra entre 2% y 3% sobre cada venta.",
+      "💰 Pagos por transferencia bancaria o efectivo: No se cobra comisión.",
+      "Estas comisiones son cobradas por Tiendanube y no por nosotros, y son estándar en todas las plataformas de ecommerce. Nosotros simplemente facilitamos la implementación, configuración y automatización de su tienda."
+    ]
+  },
+  {
+    id: "productos-stock",
+    title: "Sobre los productos y el stock",
+    points: [
+      "El cliente deberá proveer la información completa de los productos a subir: nombres, descripciones, precios, variantes (si hay), y fotografías.",
+      "Realizamos una carga inicial de productos (según el catálogo que nos entregue el cliente). Luego, brindamos una capacitación personalizada para que puedan gestionar ellos mismos su tienda: cargar nuevos productos, cambiar precios, actualizar stock, etc.",
+      "También ofrecemos soporte continuo en caso de dudas o consultas técnicas."
+    ]
+  },
+  {
+    id: "dominio",
+    title: "Sobre el dominio",
+    points: [
+      "El dominio ya fue gestionado por el cliente, por lo que en este servicio lo configuramos para que funcione correctamente con la tienda."
+    ]
+  },
+  {
+    id: "automatizacion-soporte",
+    title: "Sobre el servicio de automatización y soporte",
+    points: [
+      "Incluye mantenimiento y mejoras continuas, pequeñas actualizaciones, optimización de procesos y soporte técnico por WhatsApp o email.",
+      "Las automatizaciones se desarrollan en base a los procesos de venta de la finca y pueden ampliarse según nuevas necesidades."
+    ]
+  },
+  {
+    id: "asistente-virtual",
+    title: "Sobre el asistente virtual (solo en la opción 2)",
+    points: [
+      "El asistente funciona 24/7 y responde automáticamente consultas frecuentes como stock, precios, envíos, tiempos de entrega y más.",
+      "Se conecta a una base de datos actualizada que creamos específicamente para la finca, y responde con información en tiempo real.",
+      "Además, genera reportes semanales y mensuales con datos sobre ventas, consultas frecuentes y rendimiento general.",
+      "Todo el sistema del asistente funciona sobre un servidor VPS privado, cuyo mantenimiento y costos corren por nuestra cuenta. El cliente no paga nada extra por esta infraestructura.",
+      "A medida que crece la tienda, el asistente puede ser ajustado y mejorado para responder mejor a las necesidades del negocio."
+    ]
+  },
+  {
+    id: "suscripcion-mensual",
+    title: "Sobre la suscripción mensual",
+    points: [
+      "La suscripción se contrata con un mínimo de 6 meses de permanencia. Esto nos permite implementar, estabilizar y mejorar continuamente la tienda y sus automatizaciones.",
+      "Si en algún momento el cliente decide no continuar con la suscripción:",
+      "La tienda queda activa y totalmente funcional, ya que está a nombre del cliente.",
+      "Sin embargo, se desactivarán las automatizaciones, los reportes automatizados y el asistente virtual, ya que requieren mantenimiento técnico y servidores que nosotros gestionamos.",
+      "Si en el futuro desea reactivar nuestro servicio, puede hacerlo sin necesidad de empezar de cero.",
+      "La cuota mensual cubre todos los costos operativos: Tiendanube, automatizaciones, servidor, mantenimiento, mejoras y soporte. No hay cargos ocultos ni adicionales.",
+      "La suscripción puede cancelarse con 30 días de anticipación. Todo el sistema se desactiva al finalizar el servicio si no hay renovación."
+    ]
+  }
+];
+
+const arrowIcon = `
+<svg class="w-6 h-6 transition-transform duration-300 transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+`;
+--- 
+
+<section id="terminos" class="py-16 md:py-24 bg-gray-800">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 mb-12" data-aos="fade-up">
+      Términos y Condiciones del Servicio
+    </h2>
+    <div class="space-y-6 max-w-4xl mx-auto">
+      {terms.map((termSection, index) => (
+        <div class="term-item bg-gray-900 rounded-xl shadow-xl border border-gray-700/50 overflow-hidden" data-aos="fade-up" data-aos-delay={index * 50}>
+          <button class="term-header flex justify-between items-center w-full p-6 md:p-8 text-left focus:outline-none">
+            <h3 class="text-xl md:text-2xl font-semibold text-purple-300">{termSection.title}</h3>
+            <div class="arrow-icon-container text-purple-400">
+              <Fragment set:html={arrowIcon} />
+            </div>
+          </button>
+          <div class="term-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out">
+            <div class="p-6 md:p-8 pt-0">
+              <ul class="space-y-3 text-gray-300 pl-1 md:pl-2">
+                {termSection.points.map(point => {
+                  let classes = "relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-purple-400 text-sm md:text-base";
+                  if (point.startsWith('💳') || point.startsWith('💰')) {
+                    classes += " pl-8 md:pl-10"; // Extra indent for sub-points with emojis
+                  } else if (point.startsWith('La tienda queda activa') || point.startsWith('Sin embargo,') || point.startsWith('Si en el futuro')) {
+                     classes += " pl-8 md:pl-10 list-item list-outside marker:text-purple-500"; // Ensure marker is visible if needed
+                  }
+                  return <li class={classes} set:html={point.replace(/💳/g, "<span class='mr-1'>💳</span>").replace(/💰/g, "<span class='mr-1'>💰</span>")} />;
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const termItems = document.querySelectorAll('.term-item');
+
+    termItems.forEach(item => {
+      const header = item.querySelector('.term-header') as HTMLElement;
+      const content = item.querySelector('.term-content') as HTMLElement;
+      const arrow = header.querySelector('.arrow-icon-container svg') as SVGElement;
+
+      if (header && content && arrow) {
+        header.addEventListener('click', () => {
+          const isActive = item.classList.toggle('active');
+          if (isActive) {
+            content.style.maxHeight = content.scrollHeight + "px";
+            arrow.style.transform = 'rotate(180deg)';
+          } else {
+            content.style.maxHeight = '0';
+            arrow.style.transform = 'rotate(0deg)';
+          }
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  .term-item.active .term-header {
+    /* Optional: change background or add a border when active */
+    /* background-color: rgba(128, 90, 213, 0.1); */
+  }
+</style> 

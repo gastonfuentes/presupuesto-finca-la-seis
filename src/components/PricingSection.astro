@@ -1,0 +1,210 @@
+---
+// Component to display pricing options
+
+const arrowIcon = `
+<svg class="w-5 h-5 transition-transform duration-300 transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+`;
+
+const option1 = {
+  title: "Opción 1: Tienda sin asistente virtual",
+  idealFor: "Ideal para emprendedores que quieren empezar a vender online con una tienda bien diseñada y automatizada.",
+  monthlyPrice: "USD 179",
+  includes: [
+    "Diseño personalizado y configuración completa del ecommerce en Tiendanube.",
+    "Carga inicial de productos.",
+    "Configuración de medios de pago y envío.",
+    "Integración con redes sociales y WhatsApp.",
+    "Automatizaciones básicas: Confirmación automática de pedidos, Alertas internas por stock bajo, Mensajes de postventa automatizados.",
+    "Soporte técnico y mejoras continuas.",
+    "Plan Esencial de Tiendanube incluido en el precio."
+  ],
+  whySubscription: {
+    title: "¿Por qué una suscripción mensual?",
+    intro: "Porque no se trata simplemente de crear una tienda online, sino de mantenerla funcionando, activa y vendiendo todos los días. Con este plan, FINCA LA SEIS se asegura de contar con:",
+    points: [
+      "Una tienda bien diseñada, actualizada y adaptada a la identidad de la finca.",
+      "Acompañamiento técnico continuo para ajustes, cambios de productos, mejoras visuales y funcionales.",
+      "Automatizaciones que ahorran tiempo y mejoran la experiencia de compra (mensajes postventa, confirmaciones automáticas, alertas de stock).",
+      "Integración con redes sociales y WhatsApp.",
+      "Soporte permanente para resolver cualquier inconveniente técnico sin tener que contratar servicios adicionales.",
+      "Plan Esencial de Tiendanube ya incluido, sin que el cliente tenga que preocuparse por cargos extra."
+    ]
+  },
+  idealStart: "Este plan es ideal para comenzar con un ecommerce profesional, funcional y siempre en marcha."
+};
+
+const option2 = {
+  title: "Opción 2: Tienda con asistente virtual de IA",
+  idealFor: "Pensado para negocios que quieren automatizar las consultas más frecuentes y mejorar la atención al cliente.",
+  monthlyPrice: "USD 229",
+  includesTitle: "Incluye todo lo de la Opción 1, más:",
+  extraIncludes: [
+    "Integración entre la API de Tiendanube y una base de datos personalizada.",
+    "Asistente virtual con IA entrenado para responder sobre: Stock en tiempo real, Precios y variantes de productos, Formas de envío y tiempos estimados, Preguntas frecuentes sobre el negocio, Reportes semanales y mensuales.",
+    "Mejora y entrenamiento constante del asistente.",
+    "Sin límite de consultas."
+  ],
+  whySubscription: {
+    title: "¿Por qué una suscripción mensual?", // Can be customized if needed, e.g., "¿Por qué una suscripción Inteligente?"
+    intro: "Este plan no solo incluye todos los beneficios del anterior, sino que convierte el ecommerce en una plataforma de ventas inteligente y eficiente que trabaja de forma automática. Con esta suscripción, FINCA LA SEIS obtiene:",
+    points: [
+      "Un asistente virtual de IA disponible 24/7 para responder automáticamente consultas sobre: Disponibilidad de stock, Precios y presentaciones de productos, Formas de envío y plazos de entrega, Preguntas frecuentes del negocio.",
+      "Reportes semanales y mensuales generados por el asistente, con información sobre: Cantidad de ventas realizadas, Productos más consultados o más vendidos, Horarios de mayor actividad en la tienda.",
+      "Un sistema de atención al cliente moderno, inmediato y sin necesidad de personal extra.",
+      "Mejora constante del asistente: lo entrenamos y ajustamos periódicamente en base a nuevas consultas y comportamientos reales de los clientes.",
+      "Mayor diferenciación frente a otras marcas regionales: tu ecommerce va a tener una experiencia de compra profesional, rápida y personalizada.",
+      "Escalabilidad: este sistema se adapta fácilmente si más adelante suman nuevos productos, canales de venta o campañas promocionales."
+    ]
+  },
+  assistantBenefit: "El asistente virtual no solo atiende: también analiza, responde y ayuda a vender más. Es como tener un empleado digital que trabaja todos los días, a toda hora, sin errores y con una sonrisa constante."
+};
+
+const checkIcon = `
+<svg class="w-6 h-6 text-green-400 mr-2 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+</svg>
+`;
+--- 
+
+<section id="opciones" class="py-16 md:py-24 bg-gray-800">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 mb-16" data-aos="fade-up">
+      Nuestras Propuestas para Tienda Inteligente
+    </h2>
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+      <!-- Opción 1 Card -->
+      <div class="flex flex-col bg-gray-900 p-6 md:p-8 rounded-xl shadow-2xl border border-purple-700/50 hover:shadow-purple-500/30 transition-shadow duration-300" data-aos="fade-right" data-aos-delay="100">
+        <div class="flex-grow">
+          <h3 class="text-2xl lg:text-3xl font-bold text-purple-300 mb-3 flex items-center">
+            <span class="text-3xl mr-2"></span> {option1.title}
+          </h3>
+          <p class="text-gray-400 italic mb-6 text-sm lg:text-base">{option1.idealFor}</p>
+          
+          <div class="bg-gray-800/50 p-4 rounded-lg mb-6 border border-gray-700/50">
+            <h4 class="font-semibold text-lg text-pink-400 mb-3">Incluye:</h4>
+            <ul class="space-y-2.5 text-gray-300 text-sm lg:text-base">
+              {option1.includes.map(item => (
+                <li class="flex items-start">
+                  <Fragment set:html={checkIcon} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div class="why-subscription-item bg-gray-800/50 rounded-lg mb-6 border border-gray-700/50 overflow-hidden">
+            <button class="why-subscription-header flex justify-between items-center w-full p-4 text-left focus:outline-none hover:bg-purple-500/10 transition-colors">
+              <h4 class="font-semibold text-lg text-pink-400">{option1.whySubscription.title}</h4>
+              <div class="arrow-icon-container text-pink-400">
+                <Fragment set:html={arrowIcon} />
+              </div>
+            </button>
+            <div class="why-subscription-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out">
+              <div class="p-4 pt-2">
+                <p class="text-gray-400 mb-3 text-sm lg:text-base">{option1.whySubscription.intro}</p>
+                <ul class="space-y-2 text-gray-300 pl-5 list-disc list-outside marker:text-purple-400 text-sm lg:text-base">
+                  {option1.whySubscription.points.map(item => <li>{item}</li>)}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-auto">
+          <div class="text-center my-6 py-4 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-lg border-2 border-purple-500 shadow-lg">
+            <p class="text-4xl lg:text-5xl font-extrabold text-white">{option1.monthlyPrice}</p>
+            <p class="text-sm text-gray-300 uppercase tracking-wider">mensual</p>
+          </div>
+          <p class="text-purple-300 font-semibold text-center p-3 bg-gray-800 rounded-md text-sm lg:text-base">👉 {option1.idealStart}</p>
+        </div>
+      </div>
+
+      <!-- Opción 2 Card -->
+      <div class="flex flex-col bg-gray-900 p-6 md:p-8 rounded-xl shadow-2xl border border-pink-500/70 relative overflow-hidden hover:shadow-pink-500/40 transition-shadow duration-300" data-aos="fade-left" data-aos-delay="200">
+        <div class="absolute top-0 right-0 text-sm bg-gradient-to-r from-pink-500 to-orange-400 text-white py-1.5 px-4 rounded-bl-lg shadow-md font-bold tracking-wider z-10">
+          CON IA 🤖
+        </div>
+        <div class="flex-grow">
+          <h3 class="text-2xl lg:text-3xl font-bold text-pink-300 mb-3 flex items-center mt-8 md:mt-0">
+             <span class="text-3xl mr-2"></span> {option2.title}
+          </h3>
+          <p class="text-gray-400 italic mb-6 text-sm lg:text-base">{option2.idealFor}</p>
+
+          <div class="bg-gray-800/50 p-4 rounded-lg mb-6 border border-gray-700/50">
+            <h4 class="font-semibold text-lg text-purple-400 mb-3">{option2.includesTitle}</h4>
+            <ul class="space-y-2.5 text-gray-300 text-sm lg:text-base">
+              
+              {option2.extraIncludes.map(item => (
+                <li class="flex items-start text-pink-200/90">
+                  <Fragment set:html={checkIcon} />
+                  <span class="font-semibold">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div class="why-subscription-item bg-gray-800/50 rounded-lg mb-6 border border-gray-700/50 overflow-hidden">
+            <button class="why-subscription-header flex justify-between items-center w-full p-4 text-left focus:outline-none hover:bg-pink-500/10 transition-colors">
+              <h4 class="font-semibold text-lg text-purple-400">{option2.whySubscription.title}</h4>
+              <div class="arrow-icon-container text-purple-400">
+                <Fragment set:html={arrowIcon} />
+              </div>
+            </button>
+            <div class="why-subscription-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out">
+              <div class="p-4 pt-2">
+                <p class="text-gray-400 mb-3 text-sm lg:text-base">{option2.whySubscription.intro}</p>
+                <ul class="space-y-2 text-gray-300 pl-5 list-disc list-outside marker:text-pink-400 text-sm lg:text-base">
+                  {option2.whySubscription.points.map(item => <li>{item}</li>)}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-auto">
+          <div class="text-center my-6 py-4 bg-gradient-to-r from-pink-600/20 to-orange-500/20 rounded-lg border-2 border-pink-500 shadow-lg">
+            <p class="text-4xl lg:text-5xl font-extrabold text-white">{option2.monthlyPrice}</p>
+            <p class="text-sm text-gray-300 uppercase tracking-wider">mensual</p>
+          </div>
+          <p class="text-pink-300 font-semibold text-center p-3 bg-gray-800 rounded-md text-sm lg:text-base">🎯 {option2.assistantBenefit}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const whySubItems = document.querySelectorAll('.why-subscription-item');
+
+    whySubItems.forEach(item => {
+      const header = item.querySelector('.why-subscription-header') as HTMLElement;
+      const content = item.querySelector('.why-subscription-content') as HTMLElement;
+      const arrow = header.querySelector('.arrow-icon-container svg') as SVGElement;
+
+      if (header && content && arrow) {
+        header.addEventListener('click', () => {
+          // item.classList.toggle('active'); // 'active' class can be used for additional styling if needed
+          const isActive = content.style.maxHeight && content.style.maxHeight !== '0px';
+          if (!isActive) {
+            content.style.maxHeight = content.scrollHeight + "px";
+            arrow.style.transform = 'rotate(180deg)';
+          } else {
+            content.style.maxHeight = '0';
+            arrow.style.transform = 'rotate(0deg)';
+          }
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  .why-subscription-content {
+     transition-property: max-height;
+     /* Tailwind classes 'transition-max-height duration-500 ease-in-out' already apply these:
+        transition-timing-function: ease-in-out; 
+        transition-duration: 500ms; 
+     */
+  }
+</style> 
