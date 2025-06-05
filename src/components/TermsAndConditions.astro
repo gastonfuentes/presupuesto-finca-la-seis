@@ -56,6 +56,48 @@ const terms = [
       "La cuota mensual cubre todos los costos operativos: Tiendanube, automatizaciones, servidor, mantenimiento, mejoras y soporte. No hay cargos ocultos ni adicionales.",
       "La suscripción puede cancelarse con 30 días de anticipación. Todo el sistema se desactiva al finalizar el servicio si no hay renovación."
     ]
+  },
+  {
+    id: "plazos-entrega",
+    title: "Plazos de entrega estimados por etapas",
+    type: "htmlContent",
+    htmlContent: `
+      <div class="etapa-item mb-6">
+        <h4 class="text-lg font-semibold text-pink-400 mb-2">Etapa 1: Armado y publicación del ecommerce en Tiendanube</h4>
+        <p class="text-gray-400 mb-2"><strong>Duración estimada:</strong> 10 a 15 días hábiles desde la entrega del contenido inicial (productos, precios, medios de pago, condiciones de envío, etc.).</p>
+        <p class="text-gray-300 mb-1"><strong>Incluye:</strong></p>
+        <ul class="list-disc list-inside pl-4 text-gray-400 text-sm space-y-1 mb-2">
+          <li>Diseño personalizado de la tienda.</li>
+          <li>Configuración de medios de pago y métodos de envío.</li>
+          <li>Integración con redes sociales y WhatsApp.</li>
+          <li>Carga inicial de productos y variantes.</li>
+        </ul>
+        <p class="text-gray-300 italic"><strong>Resultado:</strong> Tienda lista y funcional para comenzar a vender online.</p>
+      </div>
+      <div class="etapa-item mb-6">
+        <h4 class="text-lg font-semibold text-pink-400 mb-2">Etapa 2: Configuración de automatizaciones</h4>
+        <p class="text-gray-400 mb-2"><strong>Duración estimada:</strong> 10 a 15 días hábiles luego de la publicación del ecommerce.</p>
+        <p class="text-gray-300 mb-1"><strong>Incluye:</strong></p>
+        <ul class="list-disc list-inside pl-4 text-gray-400 text-sm space-y-1 mb-2">
+          <li>Mensajes de confirmación automática de pedidos.</li>
+          <li>Alertas internas por stock bajo.</li>
+          <li>Mensajes automatizados de postventa.</li>
+        </ul>
+        <p class="text-gray-300 italic"><strong>Resultado:</strong> Mayor eficiencia operativa y mejora en la atención al cliente sin necesidad de intervención manual.</p>
+      </div>
+      <div class="etapa-item">
+        <h4 class="text-lg font-semibold text-pink-400 mb-2">Etapa 3: Integración del asistente virtual de IA (solo para Opción 2)</h4>
+        <p class="text-gray-400 mb-2"><strong>Duración estimada:</strong> 15 a 20 días hábiles luego de la publicación del ecommerce.</p>
+        <p class="text-gray-300 mb-1"><strong>Incluye:</strong></p>
+        <ul class="list-disc list-inside pl-4 text-gray-400 text-sm space-y-1 mb-2">
+          <li>Conexión del asistente con una base de datos propia sincronizada con Tiendanube.</li>
+          <li>Entrenamiento inicial del asistente con información del negocio y consultas frecuentes.</li>
+          <li>Implementación en el sitio web.</li>
+          <li>Reportes semanales y mensuales generados por el asistente.</li>
+        </ul>
+        <p class="text-gray-300 italic"><strong>Resultado:</strong> Un agente virtual disponible 24/7 para responder automáticamente a los usuarios, mejorar la atención al cliente y brindar estadísticas clave al negocio.</p>
+      </div>
+    `
   }
 ];
 
@@ -82,17 +124,21 @@ const arrowIcon = `
           </button>
           <div class="term-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out">
             <div class="p-6 md:p-8 pt-0">
-              <ul class="space-y-3 text-gray-300 pl-1 md:pl-2">
-                {termSection.points.map(point => {
-                  let classes = "relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-purple-400 text-sm md:text-base";
-                  if (point.startsWith('💳') || point.startsWith('💰')) {
-                    classes += " pl-8 md:pl-10"; // Extra indent for sub-points with emojis
-                  } else if (point.startsWith('La tienda queda activa') || point.startsWith('Sin embargo,') || point.startsWith('Si en el futuro')) {
-                     classes += " pl-8 md:pl-10 list-item list-outside marker:text-purple-500"; // Ensure marker is visible if needed
-                  }
-                  return <li class={classes} set:html={point.replace(/💳/g, "<span class='mr-1'>💳</span>").replace(/💰/g, "<span class='mr-1'>💰</span>")} />;
-                })}
-              </ul>
+              {termSection.type === 'htmlContent' ? (
+                <div class="prose prose-sm md:prose-base prose-invert max-w-none" set:html={termSection.htmlContent} />
+              ) : (
+                <ul class="space-y-3 text-gray-300 pl-1 md:pl-2">
+                  {termSection.points && termSection.points.map(point => {
+                    let classes = "relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-purple-400 text-sm md:text-base";
+                    if (point.startsWith('💳') || point.startsWith('💰')) {
+                      classes += " pl-8 md:pl-10"; // Extra indent for sub-points with emojis
+                    } else if (point.startsWith('La tienda queda activa') || point.startsWith('Sin embargo,') || point.startsWith('Si en el futuro')) {
+                       classes += " pl-8 md:pl-10 list-item list-outside marker:text-purple-500"; // Ensure marker is visible if needed
+                    }
+                    return <li class={classes} set:html={point.replace(/💳/g, "<span class='mr-1'>💳</span>").replace(/💰/g, "<span class='mr-1'>💰</span>")} />;
+                  })}
+                </ul>
+              )}
             </div>
           </div>
         </div>
